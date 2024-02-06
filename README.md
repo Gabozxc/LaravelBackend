@@ -15,11 +15,7 @@ Follow these steps to set up the Laravel project:
 
 First, you need to install SQLite on your system.
 
-## Step 2: Enable SQLite Extension
-
-Next, enable the SQLite extension in your `php.ini` file. You can do this by uncommenting or adding the following line: extension=pdo_sqlite
-
-## Step 3: Enable SQLite Extension Or use SupaBase with PostgreSQL
+## Step 2: Enable SQLite Extension Or use SupaBase with PostgreSQL
 
 Finally, initiate the migration process. The database utilized is SQLite, which can be found at database/database.sqlite. Don’t forget to set up the environment variables. Alternatively, you can use SupaBase. The configuration for .env is as follows:
 
