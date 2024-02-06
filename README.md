@@ -19,9 +19,13 @@ First, you need to install SQLite on your system.
 
 Next, enable the SQLite extension in your `php.ini` file. You can do this by uncommenting or adding the following line: extension=pdo_sqlite
 
-## Step 3: Enable SQLite Extension
+## Step 3: Enable SQLite Extension Or use SupaBase with PostgreSQL
 
-Finally, start the migration process. The database used was SQLite, it is located within `database/database.sqlite`. Remember to add the environment variables.
+Finally, initiate the migration process. The database utilized is SQLite, which can be found at database/database.sqlite. Don’t forget to set up the environment variables. Alternatively, you can use SupaBase. The configuration for .env is as follows:
+
+DB_CONNECTION=pgsql
+DATABASE_URL=
+DB_PASSWORD=
 
 ## Database Schema One-to-Many
 
