@@ -7,65 +7,49 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Laravel Project Setup
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Follow these steps to set up the Laravel project:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Step 1: Install SQLite
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+First, you need to install SQLite on your system.
 
-## Learning Laravel
+## Step 2: Enable SQLite Extension
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Next, enable the SQLite extension in your `php.ini` file. You can do this by uncommenting or adding the following line: extension=pdo_sqlite
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Step 3: Enable SQLite Extension
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Finally, start the migration process. The database used was SQLite, it is located within `database/database.sqlite`. Remember to add the environment variables.
 
-## Laravel Sponsors
+## Database Schema One-to-Many
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+The database consists of two tables: `users` and `tasks`.
 
-### Premium Partners
+### Users Table
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+The `users` table has the following fields:
 
-## Contributing
+- `id`: A unique identifier for each user.
+- `name`: The name of the user.
+- `email`: The email of the user. This field is unique for each user.
+- `email_verified_at`: The timestamp when the user's email was verified. This field can be null if the email is not yet verified.
+- `password`: The password of the user.
+- `rememberToken`: A token used to remember the user for future sessions.
+- `timestamps`: This includes two fields, `created_at` and `updated_at`, which Laravel automatically manages.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Tasks Table
 
-## Code of Conduct
+The `tasks` table has the following fields:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- `id`: A unique identifier for each task.
+- `user_id`: A foreign key that references the `id` in the `users` table. This establishes a relationship between the `users` and `tasks` tables, where each task is associated with a user.
+- `name`: The name of the task.
+- `description`: A text description of the task.
+- `is_completed`: A boolean value indicating whether the task is completed.
+- `timestamps`: This includes two fields, `created_at` and `updated_at`, which Laravel automatically manages.
 
-## Security Vulnerabilities
+## Authentication
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-
---Instalar SqlLite
---Activar SqlLite en las extensiones de php.ini "extension=pdo_sqlite"
---Iniciar migracion
+We are using Laravel's built-in authentication method called `auth:sanctum` for handling the endpoints.
