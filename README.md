@@ -17,10 +17,7 @@ First, you need to install SQLite on your system.
 
 ## Step 2: Enable SQLite Extension
 
-Next, enable the SQLite extension in your `php.ini` file. You can do this by uncommenting or adding the following line: extension=pdo_sqlite
-
-## Step 3: Enable SQLite Extension
-
+Next, enable the SQLite extension in your `php.ini` file. You can do this by uncommenting or adding the following line: extension=pdo_sqlite. And create a file database/database.sqlite
 Finally, start the migration process. The database used was SQLite, it is located within `database/database.sqlite`. Remember to add the environment variables.
 
 ## Database Schema One-to-Many
