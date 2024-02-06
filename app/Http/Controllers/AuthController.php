@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class AuthController extends Controller
 {
     public function register(Request $request)
     {
@@ -52,5 +52,26 @@ class UserController extends Controller
         } catch (ValidationException $e) {
             return response()->json(['error' => $e->errors()], 422);
         }
+    }
+
+    public function verifyToken(Request $request)
+    {
+        $token = $request->bearerToken();
+
+        if (!$token) {
+            return response()->json(['error' => 'Token not provided'], 401);
+        }
+
+        try {
+            $user = $request->user();
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Invalid token'], 401);
+        }
+
+        if (!$user) {
+            return response()->json(['error' => 'Invalid token'], 401);
+        }
+
+        return response()->json(['user' => $user, 'token' => $token], 200);
     }
 }

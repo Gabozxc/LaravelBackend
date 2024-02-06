@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Cookie;
 Route::get('/', function () {
     dd(auth()->user());
     return view('home');
-})->middleware('auth:sanctum');
+})->middleware('auth');
 
 Route::get('/signup', function () {
     return view('signup');
