@@ -31,25 +31,29 @@ The database consists of two tables: `users` and `tasks`.
 
 The `users` table has the following fields:
 
-- `id`: A unique identifier for each user.
-- `name`: The name of the user.
-- `email`: The email of the user. This field is unique for each user.
-- `email_verified_at`: The timestamp when the user's email was verified. This field can be null if the email is not yet verified.
-- `password`: The password of the user.
-- `rememberToken`: A token used to remember the user for future sessions.
-- `timestamps`: This includes two fields, `created_at` and `updated_at`, which Laravel automatically manages.
+-   `id`: A unique identifier for each user.
+-   `name`: The name of the user.
+-   `email`: The email of the user. This field is unique for each user.
+-   `email_verified_at`: The timestamp when the user's email was verified. This field can be null if the email is not yet verified.
+-   `password`: The password of the user.
+-   `rememberToken`: A token used to remember the user for future sessions.
+-   `timestamps`: This includes two fields, `created_at` and `updated_at`, which Laravel automatically manages.
 
 ### Tasks Table
 
 The `tasks` table has the following fields:
 
-- `id`: A unique identifier for each task.
-- `user_id`: A foreign key that references the `id` in the `users` table. This establishes a relationship between the `users` and `tasks` tables, where each task is associated with a user.
-- `name`: The name of the task.
-- `description`: A text description of the task.
-- `is_completed`: A boolean value indicating whether the task is completed.
-- `timestamps`: This includes two fields, `created_at` and `updated_at`, which Laravel automatically manages.
+-   `id`: A unique identifier for each task.
+-   `user_id`: A foreign key that references the `id` in the `users` table. This establishes a relationship between the `users` and `tasks` tables, where each task is associated with a user.
+-   `name`: The name of the task.
+-   `description`: A text description of the task.
+-   `is_completed`: A boolean value indicating whether the task is completed.
+-   `timestamps`: This includes two fields, `created_at` and `updated_at`, which Laravel automatically manages.
 
 ## Authentication
 
 We are using Laravel's built-in authentication method called `auth:sanctum` for handling the endpoints.
+
+## Postman Documentation
+
+You can download the Postman collection for this Laravel application [by clicking here](https://drive.google.com/file/d/1gseekgPezt0vHlvNsLN3L76HL-FqfLhI/view?usp=drive_link).
