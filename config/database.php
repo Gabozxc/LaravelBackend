@@ -92,13 +92,13 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
-
+        
         'supabase' => [
             'driver' => 'pgsql',
             'url' => env('SUPABASE_URL'),
-            'host' => parse_url(env('SUPABASE_URL'), PHP_URL_HOST),
-            'port' => parse_url(env('SUPABASE_URL'), PHP_URL_PORT),
-            'database' => parse_url(env('SUPABASE_URL'), PHP_URL_PATH),
+            'host' => parse_url(env('SUPABASE_URL') ?? '', PHP_URL_HOST),
+            'port' => parse_url(env('SUPABASE_URL') ?? '', PHP_URL_PORT),
+            'database' => ltrim(parse_url(env('SUPABASE_URL') ?? '', PHP_URL_PATH), '/'),
             'username' => null,
             'password' => env('SUPABASE_KEY'),
             'charset' => 'utf8',
@@ -107,6 +107,7 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
+
     ],
 
     /*
