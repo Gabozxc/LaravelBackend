@@ -32,3 +32,4 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .vercel
+.vercel.json
